@@ -1,3 +1,6 @@
+function P(text)
+        print(vim.inspect(text))
+end
 
 function Split(s, delimiter)
     local result = {};
@@ -47,11 +50,11 @@ M.add_self  = function (args)
         return self
 end
 
-M.output_to_buf = function (data)
+M.output_to_buf = function (data, index)
         local buf = vim.api.nvim_get_current_buf()
         local current_cursor_pos, _= vim.api.nvim_win_get_cursor(0)
         local row= current_cursor_pos[1]
-        vim.api.nvim_buf_set_lines(buf , row, row , true, {data})
+        vim.api.nvim_buf_set_lines(buf , row + index - 1, row + index - 1, true, {data})
 end
 
 M.autoself = function ()
@@ -61,9 +64,10 @@ M.autoself = function ()
                 return
         end
         local self = M.add_self(args)
-        for _, s in pairs(self) do
-                M.output_to_buf(s)
+        for i, s in ipairs(self) do
+                M.output_to_buf(s, i)
         end
 end
 
+M.autoself()
 return M

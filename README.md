@@ -41,4 +41,3 @@ Todo:
 
 - puts args in non oreder they were put in __init__ func 
 - docs 
-- if u rerun then it puts duplicets of every arg so u cant rerun it when u add new ones 
