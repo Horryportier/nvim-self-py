@@ -1,6 +1,3 @@
-function P(text)
-        print(vim.inspect(text))
-end
 
 function Split(s, delimiter)
     local result = {};
@@ -17,6 +14,12 @@ local M = {}
 -- take its parameters, 
 -- auto insetrt them into that function
 -- --]]
+
+M.setup = function (name)
+        vim.api.nvim_create_user_command(name, function ()
+                M.autoself()
+        end, {})
+end
 
 M.get_args = function ()
         local line = vim.api.nvim_get_current_line()
