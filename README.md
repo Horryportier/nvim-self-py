@@ -28,16 +28,5 @@ use 'Horryportier/nvim-self-py'
 Put this in your ``` init.lua ``` or, in ``` lua EOF ``` portion of your ``` init.vim ```.
 
 ```lua 
- local self = require("nvim-self-py").setup
-
- -- sets up custom command 
- self("Self")
-
+require("nvim-self-py").setup("Self")
 ```
-You can cheange name of your cmd by cheanging parameter in ``` self() ``` function.
-
----
-Todo: 
-
-- puts args in non oreder they were put in __init__ func 
-- docs 
